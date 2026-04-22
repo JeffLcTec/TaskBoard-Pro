@@ -1,0 +1,16 @@
+export const TASK_UI_CONSTANTS = {
+    BOARD_TITLE: "Gestor de tareas",
+    TASK_LIST_TITLE: "Lista de tareas",
+    TASK_LIST_EMPTY: "No hay tareas",
+    TASK_LIST_ERROR: "Error al cargar las tareas",
+    TASK_LIST_LOADING: "Cargando tareas...",
+    INPUT_PLACEHOLDER: "Ingrese una nueva tarea",
+    ADD_TASK_BUTTON: "Agregar tarea",
+    FILTER_BY_NAME_BUTTON: "Filtrar por nombre",
+    FILTER_BY_STATUS_BUTTON: "Filtrar por estado",
+    TASK_INPUT_TITLE: "Título de la tarea",
+    DELETE_BUTTON: "Eliminar",
+    TOGGLE_BUTTON: "Completar",
+    STATUS_COMPLETED: "Completada",
+    STATUS_PENDING: "Pendiente",
+}

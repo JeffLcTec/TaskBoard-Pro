@@ -1,23 +1,32 @@
 import { useState } from 'react'
 import '../App.css'
 import { TaskBoard } from '../features/tasks/components/TaskBoard.jsx'
-import { TaskForm } from '../features/tasks/components/TaskForm.jsx'
-
-function App() {
-
+import { HTML_TAGS } from '../shared/constants/html-tags.constants.js'
+import { ThemeProvider } from '../features/theme/context/ThemeProvider.jsx'
+import { useTheme } from '../features/theme/hooks/useTheme.js'
+function AppContent() {
+  const { MAIN, H1, P, BUTTON } = HTML_TAGS
+  const { theme } = useTheme
   return (
-    <main>
-      <h1>TaskBoard Pro</h1>
+    
+    <MAIN className= {theme}>
+      <H1>TaskBoard Pro</H1>
       <TaskBoard />
     
       <p>TaskBoard Pro is a task management application.</p>
       
-      <button>Crear Tarea</button>
-      <button>Filtrar Por Nombre</button>
-      <button>Filtrar Por Estado</button>
+      <BUTTON>Crear Tarea</BUTTON>
+      <BUTTON>Filtrar Por Nombre</BUTTON>
+      <BUTTON>Filtrar Por Estado</BUTTON>
       
-    </main>
+    </MAIN>
   )
+}
+function App() {
+  <ThemeProvider >
+    <AppContent/>
+  </ThemeProvider>
+
 }
 
 export default App

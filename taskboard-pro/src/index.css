@@ -95,6 +95,12 @@ p {
   margin: 0;
 }
 
+button {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  
+}
+
 code,
 .counter {
   font-family: var(--mono);
