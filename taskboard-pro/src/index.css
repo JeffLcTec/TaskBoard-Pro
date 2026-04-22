@@ -50,9 +50,7 @@
   }
 }
 
-body {
-  margin: 0;
-}
+
 
 #root {
   width: 1126px;
@@ -114,4 +112,24 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+main {
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.light {
+  background-color: white;
+  color: black;
+}
+
+.dark {
+  background-color: #1e1e1e;
+  color: white;
 }
