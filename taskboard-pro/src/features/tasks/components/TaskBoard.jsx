@@ -6,6 +6,10 @@ import { taskReducer } from "../reducer/task.reducer"
 import { TASK_ACTION_TYPES } from "../reducer/task.reducer.types"
 import { HTML_TAGS } from "../../../shared/constants/html-tags.constants"
 import { TaskFilters } from "./TaskFilters"
+import { TASK_STATUS } from "../constants/task.constants"
+import { ThemeToggle } from "../../../features/theme/components/ThemeToggle"
+import { useTaskStats } from "../hooks/useTaskStats"
+import { TaskStats } from "./TaskStats"
 
 
 export function TaskBoard() {
@@ -13,6 +17,8 @@ export function TaskBoard() {
   const [tasks, setTasks] = useReducer(taskReducer, [])
   const [statusFilter, setStatusFilter] = useState(TASK_STATUS.ALL)
   const [searchText, setSearchText] = useState("")
+
+  const stats = useTaskStats(tasks)
 
   const { SECTION, H2 } = HTML_TAGS
 
@@ -30,7 +36,7 @@ export function TaskBoard() {
       title: taskText,
       completed: false,
     }
-
+ 
     setTasks({
        type: TASK_ACTION_TYPES.ADD_TASK,
        payload: newTask 
@@ -38,8 +44,8 @@ export function TaskBoard() {
     setTaskText("")
 
     
-  }, [])
-  
+  }, [taskText])
+
   const handleToggleTask  = useCallback((id) => {
       setTasks({
         type: TASK_ACTION_TYPES.TOGGLE_TASK,
@@ -55,7 +61,7 @@ export function TaskBoard() {
     }, [])
 
 
- const handleSearchTextChange = (event) => { 
+  const handleSearchTextChange = (event) => { 
     setSearchText(event.target.value)
   }
 
@@ -63,7 +69,7 @@ export function TaskBoard() {
     setStatusFilter(event.target.value)
   }
 
- const filteredTasks = useMemo(() => { 
+  const filteredTasks = useMemo(() => { 
     return tasks.filter((task) => {
       const matchesText = task.title
         .toLowerCase()
@@ -88,6 +94,15 @@ export function TaskBoard() {
         onAddTask={handleAddTask} 
         taskText={taskText} 
         onTaskTextChange={handleTaskTextChange} 
+      />
+
+      <TaskStats stats={stats} />
+
+      <TaskFilters
+        searchText={searchText}
+        statusFilter={statusFilter}
+        onSearchTextChange={handleSearchTextChange}
+        onStatusFilterChange={handleStatusFilterChange}
       />
 
       <TaskList tasks={tasks}

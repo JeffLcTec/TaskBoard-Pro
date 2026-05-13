@@ -1,4 +1,4 @@
-export const TASK_UI_TEXT = {
+export const TASK_STATUS = {
   BOARD_TITLE: "Gestión de tareas",
   FORM_TITLE: "Agregar tarea",
   FORM_LABEL: "Título de la tarea",
